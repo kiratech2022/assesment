@@ -29,7 +29,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "ansible" do |ansible|
     ansible.inventory_path = "provisioning/inventory"
-    ansible.playbook = "provisioning/playbook.yaml"
+    ansible.playbook = "provisioning/playbook.yml"
     ansible.groups = {
       "docker_swarm_manager" => ["docker1"],
       "docker_swarm_worker" => ["docker2"],

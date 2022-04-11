@@ -1,0 +1,10 @@
+- name: Create a docker partition at least of 40GB and install it
+  hosts: docker_swarm_manager, docker_swarm_worker
+  become: true
+  tasks:
+    - name: Enable Docker daemon at startup
+      service:
+        name: docker
+        state: started
+        enabled: true
+  roles:
