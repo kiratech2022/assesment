@@ -5,26 +5,58 @@
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
+
 Vagrant.configure("2") do |config|
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
 
+  config.vm.provision "shell" do |s|
+    ssh_prv_key = ""
+    ssh_pub_key = ""
+    if File.file?("#{Dir.home}/.ssh/id_rsa")
+      ssh_prv_key = File.read("#{Dir.home}/.ssh/id_rsa")
+      ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
+    else
+      puts "No SSH key found. You will need to remedy this before pushing to the repository."
+    end
+    s.inline = <<-SHELL
+      if grep -sq "#{ssh_pub_key}" /home/vagrant/.ssh/authorized_keys; then
+        echo "SSH keys already provisioned."
+        exit 0;
+      fi
+      echo "SSH key provisioning."
+      mkdir -p /home/vagrant/.ssh/
+      touch /home/vagrant/.ssh/authorized_keys
+      echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys
+      echo #{ssh_pub_key} > /home/vagrant/.ssh/id_rsa.pub
+      chmod 644 /home/vagrant/.ssh/id_rsa.pub
+      echo "#{ssh_prv_key}" > /home/vagrant/.ssh/id_rsa
+      chmod 600 /home/vagrant/.ssh/id_rsa
+      chown -R vagrant:vagrant /home/vagrant
+      exit 0
+    SHELL
+  end
+
+  #rsync was failing during development into WSL so I skipped itò
+  config.vm.synced_folder '.', '/vagrant', disabled: true
+
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = 'centos/8'
-  config.disksize.size = '50GB'
+  config.vm.box = 'centos/stream8'
+  config.disksize.size = '52GB'
+
 
   # Create first VM
   config.vm.define 'docker1' do |docker1|
-    docker1.vm.network 'private_network', ip: '192.168.100.10'
-    docker1.vm.hostname = 'docker1.vagrant'
+    docker1.vm.network :private_network, ip: '192.168.56.10'
+    docker1.vm.hostname = 'docker1'
   end
 
   # Create second VM
   config.vm.define 'docker2' do |docker2|
-    docker2.vm.network 'private_network', ip: '192.168.100.20'
-    docker2.vm.hostname = 'docker2.vagrant'
+    docker2.vm.network :private_network, ip: '192.168.56.20'
+    docker2.vm.hostname = 'docker2'
   end
 
   config.vm.provision "ansible" do |ansible|
