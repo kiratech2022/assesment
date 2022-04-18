@@ -16,8 +16,6 @@
   roles:
     - role: docker-remote-api
       docker_remote_client_use_certs_as_default: true
-      docker_remote_server_force_deploy: true
-      docker_remote_client_become: true
 
 - name: Docker Swarm setup
   hosts: docker_swarm_manager, docker_swarm_worker
