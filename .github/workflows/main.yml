@@ -20,7 +20,7 @@ jobs:
 
       - name: Lint code.
         run: |
-          cd ${{ github.workspace }}provisioning
+          cd ${{ github.workspace }}/provisioning
           ansible-lint playbook.yml
           yamllint .
 
