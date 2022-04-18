@@ -43,5 +43,5 @@ jobs:
 
       - name: Run molecule tests.
         run: |
-          cd ${{ github.workspace }}provisioning/roles/partition/test
+          cd ${{ github.workspace }}/provisioning/roles/partition/test
           molecule test
