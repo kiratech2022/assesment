@@ -1,7 +1,8 @@
 ---
 - name: Converge
   hosts: all
+  become: true
   tasks:
-    - name: "Include molecule.test"
+    - name: "Include role partition"
       include_role:
-        name: "molecule.test"
+        name: "partition"
