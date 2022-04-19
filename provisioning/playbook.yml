@@ -26,3 +26,15 @@
       - docker-swarm
   vars:
       docker_swarm_interface: eth1
+
+- name: Deploy service from localhost to Docker Swarm cluster
+  hosts: localhost
+  tasks:
+    - name: Create a test service
+      shell: docker service create --replicas 1 -p 80:80 --name web1 nginx
+      environment:
+        DOCKER_HOST: "tcp://192.168.56.20:2376"
+        DOCKER_TLS_VERIFY: 1
+      register: docker_stack_deploy_result
+    - debug:
+        var: docker_stack_deploy_result
