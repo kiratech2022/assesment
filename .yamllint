@@ -10,7 +10,6 @@ rules:
   braces:
     level: warning
 
-
 ignore: |
   provisioning/roles/ansible-role-docker-ce/
   provisioning/roles/docker-remote-api

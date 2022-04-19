@@ -20,7 +20,7 @@ jobs:
 
       - name: Lint code.
         run: |
-          ansible-lint
+          ansible-lint --exclude ./provisioning/roles/
           yamllint .
 
   molecule:
