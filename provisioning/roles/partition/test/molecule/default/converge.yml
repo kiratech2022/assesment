@@ -1,8 +1,0 @@
----
-- name: Converge
-  hosts: all
-  become: true
-  tasks:
-    - name: "Include role partition"
-      include_role:
-        name: "partition"

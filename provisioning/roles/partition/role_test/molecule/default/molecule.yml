@@ -3,8 +3,6 @@ dependency:
   name: galaxy
 driver:
   name: vagrant
-  provider:
-    name: virtualbox
 platforms:
   - name: instance
     box: centos/stream8
@@ -14,7 +12,3 @@ provisioner:
   name: ansible
 verifier:
   name: ansible
-lint: |
-  set -e
-  yamllint .
-  ansible-lint .

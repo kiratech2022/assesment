@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include partition.role_test"
+      include_role:
+        name: "partition.role_test"
