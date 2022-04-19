@@ -30,7 +30,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          path: provisioning/roles/partition/test
+          path: provisioning/roles/partition/role_test
 
       - name: Set up Python 3.
         uses: actions/setup-python@v2
@@ -42,5 +42,5 @@ jobs:
 
       - name: Run molecule tests.
         run: |
-          cd ${{ github.workspace }}/provisioning/roles/partition/test
+          cd ${{ github.workspace }}/provisioning/roles/partition/role_test
           molecule test

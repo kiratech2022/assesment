@@ -14,7 +14,7 @@ a. Assicurarsi che la partizione utilizzata da Docker abbia almeno 40GB di  spaz
 a. Esporre le API REST del Docker Daemon in modo sicuro `docker-remote-api` 
 
 b. Assicurarsi che il Docker Daemon sia configurato come un servizio che  parta automaticamente all'avvio del sistema 
-*  Configurare un Docker Swarm sulle VM, che sia accessibile in modo sicuro.  Assicurarsi di riuscire ad interagire e deployare servizi sullo Swarm dalla  macchina locale. `docker-swarm`
+*  Configurare un Docker Swarm sulle VM, che sia accessibile in modo sicuro.  Assicurarsi di riuscire ad interagire e deployare servizi sullo Swarm dalla macchina locale. `docker-swarm`
 
 Opzionalmente:
 
