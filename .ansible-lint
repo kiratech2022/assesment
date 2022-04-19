@@ -7,3 +7,5 @@ skip_list:
   - no-changed-when
   - unnamed-task
   - risky-shell-pipe
+  - command-instead-of-shell
+  - var-spacing
