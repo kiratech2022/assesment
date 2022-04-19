@@ -5,3 +5,13 @@ rules:
   line-length:
     max: 220
     level: warning
+  new-lines:
+    level: warning
+  braces:
+    level: warning
+
+
+ignore: |
+  provisioning/roles/ansible-role-docker-ce/
+  provisioning/roles/docker-remote-api
+  provisioning/roles/docker-swarm
