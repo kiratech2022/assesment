@@ -1,7 +1,5 @@
 ---
-
 - block:
-
     - name: Install the Python SNI support packages.
       package:
         name: "{{ python_sni_support_packages }}"
@@ -15,9 +13,7 @@
         name: "{{ python_sni_pip_dependencies }}"
         state: present
 
-  when: ansible_os_family == 'Debian'
-    and ansible_python_version is version_compare('2.6.0', '>=')
-    and ansible_python_version is version_compare('2.7.9', '<')
+  when: ansible_os_family == 'Debian' and ansible_python_version is version_compare('2.6.0', '>=') and ansible_python_version is version_compare('2.7.9', '<')
 
 - name: Install apt-transport-https and gnupg if necessary.
   apt:

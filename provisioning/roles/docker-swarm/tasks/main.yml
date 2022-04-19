@@ -1,5 +1,4 @@
 ---
-
 # Variables setup
 - name: Include os-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
@@ -15,7 +14,7 @@
 - include_tasks: setup-python-pip.yml
 
 # Install the Docker repository
-- include_tasks: "repo-{{ ansible_os_family }}.yml"
+- include_tasks: repo-{{ ansible_os_family }}.yml
   when: not skip_repo
 
 # Install the Docker dependencies

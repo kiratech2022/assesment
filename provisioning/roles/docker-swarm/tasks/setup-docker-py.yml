@@ -1,5 +1,4 @@
 ---
-
 - name: Install docker-py.
   pip:
     name: "{{ docker_py_package_name }}"

@@ -1,4 +1,4 @@
-
+---
 - name: create a ca
   run_once: true
   delegate_to: "{{ docker_remote_client_host }}"
@@ -11,4 +11,3 @@
     "{{ docker_remote_certs_image }}"
   register: create_ca_cert_result
   changed_when: create_ca_cert_result.stdout_lines | length > 0
-

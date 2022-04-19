@@ -1,4 +1,4 @@
-
+---
 - name: check if container is present
   become: "{{ docker_remote_client_become }}"
   shell: docker ps -a | grep "{{ docker_remote_server_image_name }}"
@@ -181,4 +181,3 @@
     - "{{ docker_remote_certs_server_path }}/Dockerfile"
     - "{{ docker_remote_certs_server_path }}/ca.pem"
     - "{{ docker_remote_certs_server_path }}/{{ docker_remote_server_image_name }}.tar"
-

@@ -1,3 +1,4 @@
+---
 - name: Read device information
   community.general.parted: device=/dev/sda unit=MiB
   register: sda_info

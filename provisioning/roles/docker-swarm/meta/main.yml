@@ -1,5 +1,4 @@
 ---
-
 galaxy_info:
   author: Andrea Tosatto
   description: Setup a Docker Swarm Cluster on Centos/RHEL, Ubuntu/Debian.
