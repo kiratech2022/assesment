@@ -3,26 +3,26 @@
   hosts: docker_swarm_manager, docker_swarm_worker
   become: true
   tasks:
-    - name: Enable Docker daemon at startup
-      service:
-        name: docker
-        state: started
-        enabled: true
+      - name: Enable Docker daemon at startup
+        service:
+            name: docker
+            state: started
+            enabled: true
   roles:
-    - partition
-    - ansible-role-docker-ce
+      - partition
+      - ansible-role-docker-ce
 
 - name: Expose Docker Daemon REST API
   hosts: docker_swarm_manager, docker_swarm_worker
   roles:
-    - role: docker-remote-api
-      docker_remote_client_use_certs_as_default: true
-      docker_remote_client_become: true
+      - role: docker-remote-api
+        docker_remote_client_use_certs_as_default: true
+        docker_remote_client_become: true
 
 - name: Docker Swarm setup
   hosts: docker_swarm_manager, docker_swarm_worker
   become: true
   roles:
-    - docker-swarm
+      - docker-swarm
   vars:
-    docker_swarm_interface: eth1
+      docker_swarm_interface: eth1
