@@ -4,3 +4,6 @@ skip_list:
   - role-name
   - yaml
   - risky-file-permissions
+  - no-changed-when
+  - unnamed-task
+  - risky-shell-pipe
